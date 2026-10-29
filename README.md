@@ -1,4 +1,4 @@
-# ✦ CV Opportunity Recommender
+#  AIESEC Opportunities Recommender (Based On CV)
 
 ### Turning candidate profiles into relevant opportunities.
 
@@ -135,14 +135,9 @@ Explore the intersection of **data engineering and artificial intelligence** by 
 
 ## 👩‍💻 Author
 
-**Nada Dridi**
+**Nada Dridi & Med Helmi Essouied**
 
 Computer Engineering Student | Interested in Data Engineering, Data Science & AI
 
 [LinkedIn](https://linkedin.com/in/nadadridi) · [GitHub](https://github.com/NadaDr)
 
----
-
-<p align="center">
-  <i>Collect data. Discover patterns. Connect people with opportunities.</i>
-</p>
