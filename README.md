@@ -133,7 +133,7 @@ Execute the cells to retrieve and inspect opportunity data. API access, credenti
 
 Explore the intersection of **data engineering and artificial intelligence** by developing a workflow that starts with external data ingestion and progresses toward personalized opportunity recommendations.
 
-## 👩‍💻 Author
+## 👩‍💻 Authors
 
 **Nada Dridi & Med Helmi Essouied**
 
