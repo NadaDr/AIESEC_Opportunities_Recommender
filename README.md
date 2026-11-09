@@ -1,143 +1,228 @@
-#  AIESEC Opportunities Recommender (Based On CV)
+# 🚀 AIESEC Opportunities Recommender
 
-### Turning candidate profiles into relevant opportunities.
+**Intelligent Opportunity Matching Using NLP, LLMs, and Similarity-Based Recommendation**
 
-A Python project exploring how **API-driven data collection and intelligent matching** can help candidates discover international opportunities aligned with their skills, academic background, and interests.
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-150458.svg)
+![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Computing-013243.svg)
+![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-black.svg)
+![GraphQL](https://img.shields.io/badge/GraphQL-API-E10098.svg)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626.svg)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL" />
-  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
-  <img src="https://img.shields.io/badge/Google_Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=black" alt="Google Colab" />
-</p>
+This project explores how **Artificial Intelligence**, **Natural Language Processing (NLP)**, and **Recommendation Systems** can automate the process of matching candidates with relevant international opportunities.
+
+Using a candidate's CV, the system extracts key skills, qualifications, and interests through a **local Ollama LLM**, then compares the profile against opportunity data collected from the **AIESEC EXPA GraphQL API**. Opportunities are ranked using **cosine similarity**, providing personalized recommendations based on profile relevance.
 
 ---
 
-## ◈ Overview
+## 📌 Table of Contents
 
-Finding opportunities that match a candidate's qualifications can be time-consuming. This project explores the foundations of a **CV-based opportunity recommendation system** by collecting structured opportunity data from the AIESEC GraphQL API.
+- [Project Objective](#-project-objective)
+- [System Architecture](#️-system-architecture)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Skills Demonstrated](#-skills-demonstrated)
+- [Dataset](#-dataset)
+- [Getting Started](#-getting-started)
+- [Future Improvements](#-future-improvements)
+- [Business Impact](#-business-impact)
+- [Authors](#-authors)
 
-The notebook retrieves information about international opportunities, including required skills, languages, study levels, locations, programmes, and start dates.
+---
 
-The collected data provides a foundation for building a system that can connect candidate profiles with relevant opportunities.
+## 🎯 Project Objective
 
-## ✦ Key Learning Outcomes
+Finding suitable internships can be overwhelming when candidates must manually search through hundreds of opportunities.
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3>⌘ API Integration</h3>
-      Working with GraphQL queries, variables, fragments, nested fields, and HTTP POST requests.
-    </td>
-    <td width="50%">
-      <h3>▤ Data Extraction</h3>
-      Retrieving and inspecting structured JSON data from an external API using Python.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>⚙ Data Filtering</h3>
-      Applying programme, date, and partner-type filters to retrieve relevant opportunities.
-    </td>
-    <td width="50%">
-      <h3>✧ Recommendation Foundations</h3>
-      Identifying candidate and opportunity attributes that can support profile matching and relevance ranking.
-    </td>
-  </tr>
-</table>
+This project addresses that challenge by building an AI-powered workflow that:
 
-## ⌘ Project Workflow
+- Extracts information from candidate CVs
+- Processes and cleans opportunity data
+- Generates semantic candidate profiles
+- Computes similarity scores between candidates and opportunities
+- Recommends the most relevant opportunities
+
+The goal is to demonstrate practical applications of **Data Science**, **Artificial Intelligence**, **NLP**, **Recommendation Systems**, and **Data Engineering**.
+
+---
+
+## ⚙️ System Architecture
 
 ```text
-AIESEC GraphQL API
-        │
-        ▼
-  Query Construction
-        │
-        ▼
- HTTP Request (Python)
-        │
-        ▼
-   JSON Response
-        │
-        ▼
- Data Inspection & Filtering
-        │
-        ▼
-  Opportunity Dataset
-        │
-        ▼
- Future: CV-Based Matching
+Candidate CV
+      │
+      ▼
+Local Ollama LLM
+(Skill & Keyword Extraction)
+      │
+      ▼
+Candidate Profile Vector
+      │
+      ├─────────────────────┐
+      │                     │
+      ▼                     ▼
+EXPA GraphQL API      Opportunity Dataset
+      │                     │
+      ▼                     ▼
+Data Cleaning & Feature Engineering
+      │
+      ▼
+Vector Representation
+      │
+      ▼
+Cosine Similarity
+      │
+      ▼
+Ranked Opportunities
 ```
 
-## ◈ Data Collected
+---
 
-| Attribute | Description |
+## 🔍 Key Features
+
+### 📄 CV Parsing with LLM
+- Uses a local **Ollama** Large Language Model
+- Extracts:
+  - Technical skills
+  - Soft skills
+  - Academic background
+  - Keywords
+  - Areas of interest
+
+### 🌐 API-Driven Data Collection
+- Retrieves live opportunities from the **AIESEC EXPA GraphQL API**
+- Collects:
+  - Job titles
+  - Opportunity descriptions
+  - Skills requirements
+  - Languages
+  - Locations
+  - Start dates
+  - Organization information
+
+### 🧹 Data Preparation
+- Cleans and transforms nested API responses
+- Handles missing values
+- Standardizes textual information
+- Prepares data for recommendation tasks
+
+### 🤖 Similarity-Based Recommendation
+- Converts candidate and opportunity profiles into comparable feature representations
+- Computes similarity using **cosine similarity**
+- Returns ranked recommendations
+
+### 📊 Explainable Results
+- Highlights matching skills and keywords
+- Provides transparent recommendation logic
+- Helps users understand *why* opportunities are suggested
+
+---
+
+## 🛠 Tech Stack
+
+| Category | Technologies |
 |---|---|
-| Opportunity details | Title, description, project information |
-| Location | Country and host location |
-| Skills & languages | Opportunity requirements |
-| Academic background | Study levels and programme details |
-| Organization | Company and partner information |
-| Availability | Start dates, duration, available openings |
-| Additional details | Compensation and logistics, when provided |
+| **Programming** | Python |
+| **Data Processing** | Pandas, NumPy |
+| **AI & NLP** | Ollama, LLM-Based Information Extraction |
+| **Recommendation System** | Cosine Similarity, Content-Based Filtering |
+| **Data Acquisition** | GraphQL, Requests |
+| **Development Environment** | Jupyter Notebook, Google Colab |
 
-## ⚙ Tech Stack
+---
 
-- **Language:** Python
-- **API:** GraphQL over HTTP
-- **Libraries:** Requests, JSON
-- **Environment:** Google Colab / Jupyter Notebook
-- **Next steps:** Pandas, data cleaning, content-based recommendation algorithms
+## 📈 Skills Demonstrated
 
-## ▶ Getting Started
+- Data Collection
+- API Integration
+- Data Cleaning
+- Feature Engineering
+- Natural Language Processing
+- Recommendation Systems
+- Prompt Engineering
+- Similarity Search
+- Data Analysis
+- AI Application Development
 
-### 1. Clone the repository
+---
+
+## 📂 Dataset
+
+Opportunity data is collected directly from the **AIESEC EXPA GraphQL API** and includes:
+
+| Category | Features |
+|---|---|
+| **Opportunities** | Title, Description |
+| **Requirements** | Skills, Languages |
+| **Academic Information** | Study Levels |
+| **Location** | Country, City |
+| **Programs** | Internship Types |
+| **Organization** | Partner Information |
+| **Availability** | Start Dates, Openings |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- [Ollama](https://ollama.com/) installed and running locally
+- A pulled Ollama model (e.g. `ollama pull llama3`)
+- An AIESEC EXPA API access token
+
+### Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/CV-Opportunity-Recommender.git
-cd CV-Opportunity-Recommender
+# Clone the repository
+git clone https://github.com/NadaDr/aiesec-opportunities-recommender.git
+cd aiesec-opportunities-recommender
+
+# Install dependencies
+pip install pandas numpy requests scikit-learn ollama jupyter
 ```
 
-### 2. Install dependencies
+### Usage
 
-```bash
-pip install requests pandas
-```
+1. Start Ollama and make sure your model is available:
+   ```bash
+   ollama serve
+   ```
+2. Open the notebook:
+   ```bash
+   jupyter notebook
+   ```
+3. Add your EXPA API token and the path to your CV.
+4. Run all cells to extract your profile, fetch opportunities, and get ranked recommendations.
 
-Pandas is needed only if you use it in the notebook.
+---
 
-### 3. Open the notebook
+## 🔮 Future Improvements
 
-Open `CV_Opportunity_Recommender.ipynb` in Google Colab or Jupyter Notebook.
+- [ ] Implement semantic embeddings using **Sentence Transformers**
+- [ ] Improve recommendation accuracy with **hybrid recommender** approaches
+- [ ] Add candidate–opportunity **explanation generation** with LLMs
+- [ ] Deploy as a **Streamlit** web application
+- [ ] Integrate **vector databases** for scalable matching
+- [ ] Evaluate recommendation performance using **ranking metrics**
 
-### 4. Configure API credentials
+---
 
-Store the required API credential in Google Colab Secrets or an environment variable. Never commit access tokens or other secrets to GitHub.
+## 💼 Business Impact
 
-### 5. Run the notebook
+This solution demonstrates how AI can support:
 
-Execute the cells to retrieve and inspect opportunity data. API access, credentials, and current endpoint availability may affect execution.
+- International recruitment
+- Talent matching
+- Career recommendation platforms
+- Internship discovery systems
+- Educational and professional mobility programs
 
-## 🚀 Future Improvements
-
-- [ ] Transform nested JSON responses into structured Pandas DataFrames.
-- [ ] Clean missing values and remove duplicate opportunities.
-- [ ] Extract skills, qualifications, and experience from CVs.
-- [ ] Develop a content-based recommendation algorithm.
-- [ ] Rank opportunities according to candidate-profile similarity.
-- [ ] Explain why each opportunity matches a candidate.
-- [ ] Evaluate recommendation quality using sample candidate profiles.
-
-## 🎯 Project Goal
-
-Explore the intersection of **data engineering and artificial intelligence** by developing a workflow that starts with external data ingestion and progresses toward personalized opportunity recommendations.
+---
 
 ## 👩‍💻 Authors
 
-**Nada Dridi & Med Helmi Essouied**
-
-Computer Engineering Student | Interested in Data Engineering, Data Science & AI
-
-[LinkedIn](https://linkedin.com/in/nadadridi) · [GitHub](https://github.com/NadaDr)
+**Nada Dridi**
+Computer Engineering Student | Former Local Head of Marketing AIESEC in Tunisia, Sousse
+🔗 [LinkedIn](https://linkedin.com/in/nadadridi) · [GitHub](https://github.com/NadaDr)
 
